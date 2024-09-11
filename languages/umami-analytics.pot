@@ -1,0 +1,106 @@
+# Copyright (C) 2024 Making The Impact LLC
+# This file is distributed under the GPL-3.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Umami Analytics Plugin 1.0.23\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/umami-tracker\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-11T03:44:53+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: umami-analytics\n"
+
+#. Plugin Name of the plugin
+#: umami-tracker.php
+msgid "Umami Analytics Plugin"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: umami-tracker.php
+msgid "https://makingtheimpact.com/umami-analytics-plugin"
+msgstr ""
+
+#. Description of the plugin
+#: umami-tracker.php
+msgid "Easily integrate Umami Analytics with your WordPress site. Umami is a simple, fast, privacy-focused alternative to Google Analytics."
+msgstr ""
+
+#. Author of the plugin
+#: umami-tracker.php
+msgid "Making The Impact LLC"
+msgstr ""
+
+#. Author URI of the plugin
+#: umami-tracker.php
+msgid "https://makingtheimpact.com"
+msgstr ""
+
+#: umami-tracker.php:79
+msgid "Settings saved."
+msgstr ""
+
+#: umami-tracker.php:84
+msgid "Umami Analytics is not fully configured. Please enter your Website ID and Analytics URL below."
+msgstr ""
+
+#: umami-tracker.php:106
+msgid "Access Your Analytics"
+msgstr ""
+
+#: umami-tracker.php:107
+msgid "Click the button below to open your Umami Analytics dashboard in a new tab:"
+msgstr ""
+
+#: umami-tracker.php:108
+#: umami-tracker.php:279
+msgid "Open Umami Dashboard"
+msgstr ""
+
+#: umami-tracker.php:110
+msgid "Privacy Policy Content"
+msgstr ""
+
+#: umami-tracker.php:111
+msgid "You can copy the text below to add information about Umami Analytics to your privacy policy:"
+msgstr ""
+
+#: umami-tracker.php:115
+#: umami-tracker.php:123
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: umami-tracker.php:121
+msgid "Copied!"
+msgstr ""
+
+#: umami-tracker.php:129
+msgid "Thanks for using my free plugin! For custom designed WordPress sites, plugins, graphic design, tech support, and more, check out <a href=\"https://makingtheimpact.com\">Making The Impact LLC!</a>"
+msgstr ""
+
+#: umami-tracker.php:145
+msgid "This site uses Umami Analytics to track visitor information. Umami is privacy-focused and does not use cookies or collect personal data."
+msgstr ""
+
+#: umami-tracker.php:146
+msgid "Umami Analytics does not track or store any personal information about visitors. It only collects anonymous usage data such as page views, referrers, and browser information."
+msgstr ""
+
+#: umami-tracker.php:221
+msgid "Settings"
+msgstr ""
+
+#: umami-tracker.php:275
+msgid "Umami Analytics is not fully configured. Please set it up in the"
+msgstr ""
+
+#: umami-tracker.php:275
+msgid "settings page"
+msgstr ""
+
+#: umami-tracker.php:278
+msgid "Quick access to your Umami Analytics dashboard:"
+msgstr ""
