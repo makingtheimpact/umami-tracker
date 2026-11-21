@@ -31,3 +31,8 @@ This plugin is licensed under the GPL-3.0 License. See the LICENSE file for more
 - Author: Making The Impact LLC
 - Version: 1.0.23
 - License: GPL-3.0 license
+## Umami 1.x to 3.x transition
+
+Version 1.1.0 adds **Settings → Umami Tracking → Umami version**. New and existing WordPress installs default to **Umami 1.x (`/umami.js`)**. Deploying this plugin update by itself does not switch live tracking. After the analytics server is running Umami 2.x or 3.x, choose **Umami 2.x / 3.x (`/script.js`)**, save, purge cached HTML, and verify `/api/send` accepts pageviews. The Website ID is unchanged. A test site is recommended before updating client sites.
+
+The plugin currently excludes all logged-in visitors from tracking, consistent with existing behavior.

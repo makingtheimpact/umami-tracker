@@ -3,7 +3,7 @@ Contributors: makingtheimpact
 Tags: analytics, umami, privacy
 Requires at least: 5.0
 Tested up to: 6.3
-Stable tag: 1.0.23
+Stable tag: 1.1.1
 Requires PHP: 7.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,6 +16,7 @@ This plugin allows you to easily add Umami Analytics tracking to your WordPress 
 
 Features:
 * Easy setup - just enter your Website ID and Analytics URL
+* Supports Umami 1.x (/umami.js) and Umami 2.x/3.x (/script.js) with an explicit version setting
 * Respects user privacy - doesn't track logged-in users
 * Lightweight and fast
 * Compatible with the latest version of WordPress
@@ -27,6 +28,8 @@ Features:
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Use the Settings->Umami Tracking screen to configure the plugin
 4. Enter your Umami Website ID and Analytics URL
+5. Leave the Umami version set to 1.x until the analytics server is upgraded. Then select 2.x / 3.x and save.
+6. Clear any page cache and verify the new /script.js tracker and /api/send collection requests.
 
 == Frequently Asked Questions ==
 
@@ -35,6 +38,14 @@ Features:
 You can find these in your Umami Analytics dashboard. If you haven't set up Umami yet, visit [umami.is](https://umami.is) to get started.
 
 == Changelog ==
+
+= 1.1.1 =
+* Accept base URLs and full script URLs without duplicating /script.js.
+
+= 1.1.0 =
+* Added explicit Umami 1.x or Umami 2.x/3.x tracker selection.
+* Existing installations default to Umami 1.x, so deploying the plugin before the server migration does not change tracking.
+* Retained existing Website ID and analytics URL settings.
 
 = 1.0.23 =
 * Added error handling for missing settings
