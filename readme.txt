@@ -3,7 +3,7 @@ Contributors: makingtheimpact
 Tags: analytics, umami, privacy
 Requires at least: 5.0
 Tested up to: 6.3
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 7.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,9 @@ Features:
 You can find these in your Umami Analytics dashboard. If you haven't set up Umami yet, visit [umami.is](https://umami.is) to get started.
 
 == Changelog ==
+
+= 1.1.1 =
+* Accept base URLs and full script URLs without duplicating /script.js.
 
 = 1.1.0 =
 * Added explicit Umami 1.x or Umami 2.x/3.x tracker selection.
