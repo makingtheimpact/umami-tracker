@@ -3,7 +3,7 @@
  * Plugin Name: Umami Analytics Plugin
  * Plugin URI: https://makingtheimpact.com/umami-analytics-plugin
  * Description: Easily integrate Umami Analytics with your WordPress site. Umami is a simple, fast, privacy-focused alternative to Google Analytics.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Making The Impact LLC
  * Author URI: https://makingtheimpact.com
  * License: GPL-3.0+
@@ -31,13 +31,14 @@ function umami_tracker_script_name() {
 function umami_add_tracking_code() {
     if (!is_user_logged_in() && !current_user_can('manage_options')) {
         $website_id = get_option('umami_website_id');
-        $analytics_url = get_option('umami_analytics_url');
-        
-        if (empty($analytics_url)) {
-            $analytics_url = 'https://tracktheimpact.net/' . umami_tracker_script_name();
-        } else {
-            $analytics_url = trailingslashit($analytics_url) . umami_tracker_script_name();
+        $analytics_url = trim((string) get_option('umami_analytics_url', ''));
+        if ('' === $analytics_url) {
+            $analytics_url = 'https://tracktheimpact.net';
         }
+
+        // Accept a server base URL or a full Umami script URL.
+        $analytics_url = preg_replace('~/(?:umami|script)\\.js/?$~i', '', $analytics_url);
+        $analytics_url = trailingslashit($analytics_url) . umami_tracker_script_name();
 
         if (!empty($website_id) && !empty($analytics_url)) {
             $tracking_code = '<script async defer data-website-id="' . esc_attr($website_id) . '" src="' . esc_url($analytics_url) . '"></script>';
