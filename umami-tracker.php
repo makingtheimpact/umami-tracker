@@ -3,7 +3,7 @@
  * Plugin Name: Umami Analytics Plugin
  * Plugin URI: https://makingtheimpact.com/umami-analytics-plugin
  * Description: Easily integrate Umami Analytics with your WordPress site. Umami is a simple, fast, privacy-focused alternative to Google Analytics.
- * Version: 1.0.23
+ * Version: 1.1.0
  * Author: Making The Impact LLC
  * Author URI: https://makingtheimpact.com
  * License: GPL-3.0+
@@ -11,6 +11,14 @@
  * Text Domain: umami-analytics
  * Domain Path: /languages
  */
+
+/**
+ * Select tracker script by Umami server version, defaulting to the legacy
+ * endpoint until the live analytics server has been upgraded.
+ */
+function umami_tracker_script_name() {
+    return 'v3' === get_option('umami_tracker_version', 'v1') ? 'script.js' : 'umami.js';
+}
 
 /**
  * Add Umami tracking code to the site.
@@ -26,9 +34,9 @@ function umami_add_tracking_code() {
         $analytics_url = get_option('umami_analytics_url');
         
         if (empty($analytics_url)) {
-            $analytics_url = 'https://tracktheimpact.net/umami.js';
+            $analytics_url = 'https://tracktheimpact.net/' . umami_tracker_script_name();
         } else {
-            $analytics_url = trailingslashit($analytics_url) . 'umami.js';
+            $analytics_url = trailingslashit($analytics_url) . umami_tracker_script_name();
         }
 
         if (!empty($website_id) && !empty($analytics_url)) {
@@ -74,6 +82,8 @@ function umami_render_settings_page() {
         
         update_option('umami_website_id', $website_id);
         update_option('umami_analytics_url', $analytics_url);
+        $tracker_version = isset($_POST['umami_tracker_version']) ? sanitize_key(wp_unslash($_POST['umami_tracker_version'])) : 'v1';
+        update_option('umami_tracker_version', in_array($tracker_version, array('v1', 'v3'), true) ? $tracker_version : 'v1');
         
         echo '<div class="updated"><p>' . __('Settings saved.', 'umami-analytics') . '</p></div>';
     }
@@ -100,6 +110,16 @@ function umami_render_settings_page() {
                 <tr valign="top">
                     <th scope="row"><label for="umami_analytics_url"><?php _e('Analytics URL:', 'umami-analytics'); ?></label></th>
                     <td><input type="text" name="umami_analytics_url" id="umami_analytics_url" value="<?php echo esc_attr($analytics_url); ?>" placeholder="https://yourtrackingsite.com" style="min-width: 300px" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row"><label for="umami_tracker_version"><?php esc_html_e('Umami version:', 'umami-analytics'); ?></label></th>
+                    <td>
+                        <select id="umami_tracker_version" name="umami_tracker_version">
+                            <option value="v1" <?php selected(get_option('umami_tracker_version', 'v1'), 'v1'); ?>><?php esc_html_e('Umami 1.x — /umami.js', 'umami-analytics'); ?></option>
+                            <option value="v3" <?php selected(get_option('umami_tracker_version', 'v1'), 'v3'); ?>><?php esc_html_e('Umami 2.x / 3.x — /script.js', 'umami-analytics'); ?></option>
+                        </select>
+                        <p class="description"><?php esc_html_e('Leave on v1 until the Umami server upgrade is complete. Existing website IDs are retained.', 'umami-analytics'); ?></p>
+                    </td>
                 </tr>
             </table>
             <?php submit_button(); ?>
